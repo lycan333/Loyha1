@@ -37,7 +37,7 @@ class Books extends \yii\db\ActiveRecord
     {
         return 'books';
     }
-
+    public $imageFiles;
     /**
      * @inheritdoc
      */
@@ -49,12 +49,26 @@ class Books extends \yii\db\ActiveRecord
             [['EditionYear'], 'safe'],
             [['title'], 'string', 'max' => 400],
             [['img'], 'string', 'max' => 300],
+            [['imageFiles'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
             [['ISBN'], 'string', 'max' => 20],
             [['qrcode'], 'string', 'max' => 30],
             [['publisherId'], 'exist', 'skipOnError' => true, 'targetClass' => Publisher::className(), 'targetAttribute' => ['publisherId' => 'id']],
             [['categoryId'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['categoryId' => 'id']],
             [['langId'], 'exist', 'skipOnError' => true, 'targetClass' => Languages::className(), 'targetAttribute' => ['langId' => 'id']],
         ];
+    }
+
+    public function upload()
+    {
+        if ($this->validate()) {
+
+            foreach ($this->imageFiles as $file) {
+                $file->saveAs('uploads/' . $file->baseName . '.' . $file->extension);
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

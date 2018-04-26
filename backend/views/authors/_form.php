@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'FIO')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'img')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'img')->fileInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'userId')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\User::find()->all(),'id','FIO')) ?>
 

@@ -8,6 +8,7 @@ use backend\searchModels\BooksSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * BooksController implements the CRUD actions for Books model.
@@ -65,11 +66,21 @@ class BooksController extends Controller
     public function actionCreate()
     {
         $model = new Books();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if (Yii::$app->request->isPost) {
+            $model->imageFiles = UploadedFile::getInstance($model, 'imageFiles');
+            $model->img = $model->imageFiles->baseName . $model->imageFiles->extension;
+            if ($model->load(Yii::$app->request->post())) {
+                if ($model->upload()) {
+                    Yii::$app->session->setFlash("success", "Malumot yuklandi");
+                } else {
+                    Yii::$app->session->setFlash("danger", "Malumot yuklanmadi");
+                }
+                if ($model->validate()) {
+                    $model->save();
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            }
         }
-
         return $this->render('create', [
             'model' => $model,
         ]);

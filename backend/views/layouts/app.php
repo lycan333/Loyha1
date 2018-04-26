@@ -43,7 +43,7 @@ MainAsset::register($this);
 <body class="page-body" data-url="http://neon.dev">
 <?php $this->beginBody() ?>
 <div class="page-container">
-    <?=(!Yii::$app->user->isGuest)?$this->render('//parts/sidebar'):"";?>
+    <?=$this->render('//parts/sidebar');?>
     <div class="main-content">
        <?=$content?>
         <br />
