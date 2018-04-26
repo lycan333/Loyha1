@@ -45,6 +45,7 @@ MainAsset::register($this);
 <div class="page-container">
     <?=(!Yii::$app->user->isGuest)?$this->render('//parts/sidebar'):"";?>
     <div class="main-content">
+        <?=$this->render('//parts/header')?>
        <?=$content?>
         <br />
         <!-- lets do some work here... -->

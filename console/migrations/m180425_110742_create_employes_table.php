@@ -14,7 +14,8 @@ class m180425_110742_create_employes_table extends Migration
     {
         $this->createTable('employes', [
             'id' => $this->primaryKey(),
-            'userId'=>$this->integer(11)->notNull()
+            'userId'=>$this->integer(11)->notNull(),
+            'img'=>$this->string(300)->null(),
         ]);
         $this->createIndex('emp1','employes','userId');
 

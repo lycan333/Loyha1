@@ -16,6 +16,7 @@ class m180425_110638_create_books_table extends Migration
             'id' => $this->primaryKey(),
             'title'=>$this->string(400),
             'pageSize'=>$this->integer(11),
+            'img'=>$this->string(300),
             'EditionYear'=>$this->date()->notNull(),
             'editions'=>$this->integer(11),
             'ISBN'=>$this->string(20),

@@ -9,19 +9,35 @@ use yii\helpers\Html;
 
 $this->title = $name;
 ?>
-<div class="site-error">
+<div class="page-error-404">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <div class="alert alert-danger">
-        <?= nl2br(Html::encode($message)) ?>
+    <div class="error-symbol">
+        <i class="entypo-attention"></i>
     </div>
 
-    <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
+    <div class="error-text">
+        <h2><?= Html::encode($this->title) ?></h2>
+        <p><?= nl2br(Html::encode($message)) ?></p>
+    </div>
+
+    <hr />
+
+    <div class="error-text">
+
+        Search Pages:
+
+        <br />
+        <br />
+
+        <div class="input-group minimal">
+            <div class="input-group-addon">
+                <i class="entypo-search"></i>
+            </div>
+
+            <input type="text" class="form-control" placeholder="Search anything..." />
+        </div>
+
+    </div>
 
 </div>
