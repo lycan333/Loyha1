@@ -21,7 +21,7 @@ class BookAuthors extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'bookAuthors';
+        return '{{%bookAuthors}}';
     }
 
     /**

@@ -12,7 +12,7 @@ class m180425_110526_create_publisher_table extends Migration
      */
     public function safeUp()
     {
-        $this->createTable('publisher', [
+        $this->createTable('{{%publisher}}', [
             'id' => $this->primaryKey(),
             'name'=>$this->string(100),
             'website'=>$this->string(300),

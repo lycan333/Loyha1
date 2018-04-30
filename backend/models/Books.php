@@ -35,7 +35,7 @@ class Books extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'books';
+        return '{{%books}}';
     }
     public $imageFiles;
     /**

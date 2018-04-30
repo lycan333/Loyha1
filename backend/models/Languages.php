@@ -19,7 +19,7 @@ class Languages extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'languages';
+        return '{{%languages}}';
     }
 
     /**

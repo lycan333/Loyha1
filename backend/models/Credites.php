@@ -21,7 +21,7 @@ class Credites extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'credites';
+        return '{{%credites}}';
     }
 
     /**

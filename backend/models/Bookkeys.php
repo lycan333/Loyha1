@@ -21,7 +21,7 @@ class Bookkeys extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'bookkeys';
+        return '{{%bookkeys}}';
     }
 
     /**

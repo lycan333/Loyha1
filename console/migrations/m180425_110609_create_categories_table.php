@@ -12,7 +12,7 @@ class m180425_110609_create_categories_table extends Migration
      */
     public function safeUp()
     {
-        $this->createTable('categories', [
+        $this->createTable('{{%categories}}', [
             'id' => $this->primaryKey(),
             'name'=>$this->string(300),
             'descriptions'=>$this->text()

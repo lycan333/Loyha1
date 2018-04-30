@@ -20,7 +20,7 @@ class TagKeys extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'tagKeys';
+        return '{{%tagKeys}}';
     }
 
     /**

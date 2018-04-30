@@ -12,7 +12,7 @@ class m180425_110628_create_languages_table extends Migration
      */
     public function safeUp()
     {
-        $this->createTable('languages', [
+        $this->createTable('{{%languages}}', [
             'id' => $this->primaryKey(),
             'lang'=>$this->string(300),
         ]);

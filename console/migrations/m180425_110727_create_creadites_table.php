@@ -12,14 +12,14 @@ class m180425_110727_create_creadites_table extends Migration
      */
     public function safeUp()
     {
-        $this->createTable('credites', [
+        $this->createTable('{{%credites}}', [
             'id' => $this->primaryKey(),
             'role'=>$this->string(100),
             'authorId'=>$this->integer(11)->notNull(),
         ]);
-        $this->createIndex('ci1','credites','authorId');
+        $this->createIndex('ci1','{{%credites}}','authorId');
 
-        $this->addForeignKey('fkcredites1','credites','authorId','authors','id','cascade','cascade');
+        $this->addForeignKey('fkcredites1','{{%credites}}','authorId','{{%authors}}','id','cascade','cascade');
     }
 
     /**

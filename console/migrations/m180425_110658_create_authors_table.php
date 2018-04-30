@@ -12,7 +12,7 @@ class m180425_110658_create_authors_table extends Migration
      */
     public function safeUp()
     {
-        $this->createTable('authors', [
+        $this->createTable('{{%authors}}', [
             'id' => $this->primaryKey(),
             'FIO'=>$this->string(300)->notNull(),
             'img'=>$this->string(300),
@@ -20,9 +20,9 @@ class m180425_110658_create_authors_table extends Migration
             'about'=>$this->text()
         ]);
 
-        $this->createIndex('authors1','authors','userId');
+        $this->createIndex('authors1','{{%authors}}','userId');
 
-        $this->addForeignKey('fkauthors1','authors','userId','user','id','cascade','cascade');
+        $this->addForeignKey('fkauthors1','{{%authors}}','userId','user','id','cascade','cascade');
     }
 
     /**
@@ -30,6 +30,6 @@ class m180425_110658_create_authors_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('authors');
+        $this->dropTable('{{%authors}}');
     }
 }
