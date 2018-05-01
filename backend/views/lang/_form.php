@@ -7,17 +7,23 @@ use yii\widgets\ActiveForm;
 /* @var $model backend\models\Languages */
 /* @var $form yii\widgets\ActiveForm */
 ?>
+<div class="row">
+    <div class="center-block" style="width: 50%;">
+        <div class="panel panel-default ">
+            <div class="panel-heading">
+                <div class="panel-title"><?= $this->title ?></div>
+            </div>
+            <div class="panel-body">
+                <?php $form = ActiveForm::begin(); ?>
 
-<div class="languages-form">
+                <?= $form->field($model, 'lang')->textInput(['maxlength' => true]) ?>
 
-    <?php $form = ActiveForm::begin(); ?>
+                <div class="form-group">
+                    <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+                </div>
 
-    <?= $form->field($model, 'lang')->textInput(['maxlength' => true]) ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+                <?php ActiveForm::end(); ?>
+            </div>
+        </div>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>

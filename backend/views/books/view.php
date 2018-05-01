@@ -22,20 +22,15 @@
 
             <div class="action-links">
 
-                <a href="#" class="approve">
-                    <i class="entypo-check"></i>
-                    Approve
-                </a>
-
-                <a href="#" class="delete">
+                <a href="<?=\yii\helpers\Url::to(['books/delete','id'=>$model->id])?>" class="delete">
                     <i class="entypo-cancel"></i>
-                    Delete
+                    O'chirish
                 </a>
 
 
-                <a href="javascript:;" onclick="jQuery('#modal-edit-comment').modal('show');" class="edit">
+                <a href="<?=\yii\helpers\Url::to(['books/update','id'=>$model->id])?>" class="edit">
                     <i class="entypo-pencil"></i>
-                    Edit
+                    o'zgartirish
                 </a>
 
             </div>

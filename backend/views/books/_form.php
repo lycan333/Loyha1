@@ -74,6 +74,10 @@ use yii\widgets\ActiveForm;
                         ])->textInput(['maxlength' => true])->label("QRCode") ?>
 
                     </div>
+
+                </div>
+                <div class="panel-footer">
+                    <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
                 </div>
             </div>
         </div>

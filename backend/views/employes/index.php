@@ -7,26 +7,22 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\searchModels\EmployesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Employes';
+$this->title = 'Kitobxonlar';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="employes-index">
-
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <p>
-        <?= Html::a('Create Employes', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Kitobxon qo\'shish', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'layout'=>'{items}',
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'userId',
             'img',
 
@@ -34,4 +30,3 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
     <?php Pjax::end(); ?>
-</div>

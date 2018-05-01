@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\searchModels\PublisherSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Publishers';
+$this->title = 'Nashriyotlar';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="publisher-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Publisher', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Nashiriyot qo\'shish', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,12 +25,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'name',
             'website',
             'about:ntext',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

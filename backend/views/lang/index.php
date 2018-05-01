@@ -7,17 +7,15 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\searchModels\LangSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Languages';
+$this->title = 'Tillar';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="languages-index">
-
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Languages', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Yangi tilni kiritish', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,12 +23,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'lang',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
     <?php Pjax::end(); ?>
-</div>

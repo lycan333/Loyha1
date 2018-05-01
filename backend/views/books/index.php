@@ -8,7 +8,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\searchModels\BooksSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Books';
+$this->title = 'Kitoblar';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="books-index">
@@ -41,6 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'tag' => 'ul',
                     'class' => 'comments-list',
                 ],
+                'emptyText'=>'Baza Bo\'sh',
                 'layout' => "{items}",
                 'itemView' => 'view',
                 'itemOptions' => [

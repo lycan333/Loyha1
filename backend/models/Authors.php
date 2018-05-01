@@ -48,10 +48,10 @@ class Authors extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'FIO' => 'Fio',
-            'img' => 'Img',
-            'userId' => 'User ID',
-            'about' => 'About',
+            'FIO' => 'FIO',
+            'img' => 'Surat',
+            'userId' => 'Foydalanuvchi',
+            'about' => 'Qisqacha malumot',
         ];
     }
 

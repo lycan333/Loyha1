@@ -5,17 +5,11 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Publisher */
 
-$this->title = 'Update Publisher: {nameAttribute}';
-$this->params['breadcrumbs'][] = ['label' => 'Publishers', 'url' => ['index']];
+$this->title = 'Nashriyotni o\'zgartirish: {nameAttribute}';
+$this->params['breadcrumbs'][] = ['label' => 'Nashriyot', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'O\'zgartirish';
 ?>
-<div class="publisher-update">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
-</div>

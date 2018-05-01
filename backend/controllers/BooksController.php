@@ -18,17 +18,6 @@ class BooksController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
 
     /**
      * Lists all Books models.
@@ -67,17 +56,15 @@ class BooksController extends Controller
     {
         $model = new Books();
         if (Yii::$app->request->isPost) {
-            $model->imageFiles = UploadedFile::getInstance($model, 'imageFiles');
-            $model->img = $model->imageFiles->baseName . $model->imageFiles->extension;
             if ($model->load(Yii::$app->request->post())) {
-                if ($model->upload()) {
-                    Yii::$app->session->setFlash("success", "Malumot yuklandi");
-                } else {
-                    Yii::$app->session->setFlash("danger", "Malumot yuklanmadi");
-                }
+                $model->imageFiles = UploadedFile::getInstance($model, 'imageFiles');
+                $model->img = $model->imageFiles->baseName . $model->imageFiles->extension;
                 if ($model->validate()) {
                     $model->save();
-                    return $this->redirect(['view', 'id' => $model->id]);
+                    Yii::$app->session->setFlash("success", "Malumot yuklandi");
+                    return $this->redirect(['index']);
+                } else {
+                    Yii::$app->session->setFlash("danger", "Malumot yuklanmadi");
                 }
             }
         }

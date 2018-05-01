@@ -41,8 +41,8 @@ class Categories extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'descriptions' => 'Descriptions',
+            'name' => 'Kategoriya',
+            'descriptions' => 'Qisqacha malumot',
         ];
     }
 
