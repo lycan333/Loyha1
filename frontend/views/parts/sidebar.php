@@ -2,12 +2,8 @@
 
 $ar = [
     ['books/', 'Kitoblar', 'book'],
-    ['employes/', 'Kitobxonlar', 'users'],
-    ['authors/', 'Avtorlar', 'feather'],
-    ['creditess/', 'Masul shaxslar', 'suitcase'],
-    ['categories/', 'Kategoriya', 'menu'],
-    ['publisher/', 'Nashriyotlar', 'bookmarks'],
-    ['lang/', 'Internation', 'globe'],
+    ['employes/', 'Maqolalar', 'list'],
+    ['authors/', 'Xabarlar', 'feather'],
 ];
 
 

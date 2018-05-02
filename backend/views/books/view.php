@@ -7,7 +7,7 @@
     <div class="comment-details">
 
         <div class="comment-head">
-            <a href="#"><?=$model->title?></a> categoiyasi <a href="#"><?=$model->category->name?></a>
+            <a href="<?=\yii\helpers\Url::to(['books/view','id'=>$model->id])?>"><?=$model->title?></a> categoiyasi <a href="#"><?=$model->category->name?></a>
         </div>
 
         <p class="comment-text">

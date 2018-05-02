@@ -199,8 +199,7 @@
             <div class="icon"><i class="entypo-users"></i></div>
             <div class="num" data-start="0" data-end="83" data-postfix="" data-duration="1500" data-delay="0">0</div>
 
-            <h3>Registered users</h3>
-            <p>so far in our blog, and our website.</p>
+            <h3>Kitobxonlar</h3>
         </div>
 
     </div>
@@ -211,8 +210,7 @@
             <div class="icon"><i class="entypo-chart-bar"></i></div>
             <div class="num" data-start="0" data-end="135" data-postfix="" data-duration="1500" data-delay="600">0</div>
 
-            <h3>Daily Visitors</h3>
-            <p>this is the average value.</p>
+            <h3>Tizim statistikasi</h3>
         </div>
 
     </div>
@@ -223,8 +221,7 @@
             <div class="icon"><i class="entypo-mail"></i></div>
             <div class="num" data-start="0" data-end="23" data-postfix="" data-duration="1500" data-delay="1200">0</div>
 
-            <h3>New Messages</h3>
-            <p>messages per day.</p>
+            <h3>Yaangi xabarlar</h3>
         </div>
 
     </div>
@@ -235,8 +232,7 @@
             <div class="icon"><i class="entypo-rss"></i></div>
             <div class="num" data-start="0" data-end="52" data-postfix="" data-duration="1500" data-delay="1800">0</div>
 
-            <h3>Subscribers</h3>
-            <p>on our site right now.</p>
+            <h3>Murojatlar</h3>
         </div>
 
     </div>
@@ -249,30 +245,26 @@
             <div class="panel-heading">
                 <div class="panel-title">Qaytarilishi kerak bo'lgan kitoplar</div>
             </div>
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th><div id=""></div></th>
-                    <th>Kitop</th>
-                    <th>Author</th>
-                    <th>Kitopxon</th>
-                    <th>Muddati</th>
-                </tr>
-                </thead>
 
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Arlind</td>
-                    <td>Nushi</td>
-                    <td>Feruz</td>
-                    <td>2</td>
-                </tr>
+            <?= \yii\grid\GridView::widget([
+                'dataProvider' => $dataProvider,
+                'layout' => '{items}',
+                'columns' => [
+                    ['class' => 'yii\grid\SerialColumn'],
 
-                </tbody>
-            </table>
+                    'user.FIO',
+                    [
+                        'header' => 'Kitoblar soni',
+                        'value' => function ($r) {
+                            return count($r->bookEmples);
+                        }
+                    ],
+
+                    ['class' => 'yii\grid\ActionColumn'],
+                ],
+            ]); ?>
             <div class="panel-footer">
-                    <a href="#" class="btn btn-info ">Qolganlarni ko'rish</a>
+                    <a href="<?=\yii\helpers\Url::to(['employes/'])?>" class="btn btn-info ">Qolganlarni ko'rish</a>
             </div>
         </div>
     </div>

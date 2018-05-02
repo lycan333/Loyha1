@@ -59,12 +59,10 @@ class AuthorsSearch extends Authors
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
             'userId' => $this->userId,
         ]);
 
         $query->andFilterWhere(['like', 'FIO', $this->FIO])
-            ->andFilterWhere(['like', 'img', $this->img])
             ->andFilterWhere(['like', 'about', $this->about]);
 
         return $dataProvider;

@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Books', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('kitob qo\'shish', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <div class="panel panel-primary">

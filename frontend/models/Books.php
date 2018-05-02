@@ -1,11 +1,11 @@
 <?php
 
-namespace backend\models;
+namespace frontend\models;
 
 use Yii;
 
 /**
- * This is the model class for table "books".
+ * This is the model class for table "library_books".
  *
  * @property int $id
  * @property string $title
@@ -35,9 +35,9 @@ class Books extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%books}}';
+        return 'library_books';
     }
-    public $imageFiles;
+
     /**
      * @inheritdoc
      */
@@ -46,27 +46,15 @@ class Books extends \yii\db\ActiveRecord
         return [
             [['pageSize', 'editions', 'publisherId', 'prince', 'categoryId', 'langId'], 'integer'],
             [['EditionYear'], 'required'],
-            [['img'], 'required'],
             [['EditionYear'], 'safe'],
             [['title'], 'string', 'max' => 400],
-            [['img'], 'string', 'max' => 300,],
-            [['imageFiles'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
+            [['img'], 'string', 'max' => 300],
             [['ISBN'], 'string', 'max' => 20],
             [['qrcode'], 'string', 'max' => 30],
             [['publisherId'], 'exist', 'skipOnError' => true, 'targetClass' => Publisher::className(), 'targetAttribute' => ['publisherId' => 'id']],
             [['categoryId'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['categoryId' => 'id']],
             [['langId'], 'exist', 'skipOnError' => true, 'targetClass' => Languages::className(), 'targetAttribute' => ['langId' => 'id']],
         ];
-    }
-
-    public function upload()
-    {
-        if ($this->validate()) {
-                $this->imageFiles->saveAs('uploads/' .$this->img);
-            return true;
-        } else {
-            return false;
-        }
     }
 
     /**
@@ -76,14 +64,14 @@ class Books extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Kitob nomi',
-            'pageSize' => 'Sahifalar soni',
-            'img' => 'Surati',
-            'EditionYear' => 'Nashr etilgan yili',
-            'editions' => 'Nashr raqami',
-            'ISBN' => 'ISBN',
-            'publisherId' => 'Nashriyot Id',
-            'prince' => 'Narxi',
+            'title' => 'Title',
+            'pageSize' => 'Page Size',
+            'img' => 'Img',
+            'EditionYear' => 'Edition Year',
+            'editions' => 'Editions',
+            'ISBN' => 'Isbn',
+            'publisherId' => 'Publisher ID',
+            'prince' => 'Prince',
             'qrcode' => 'Qrcode',
             'categoryId' => 'Category ID',
             'langId' => 'Lang ID',
@@ -144,14 +132,5 @@ class Books extends \yii\db\ActiveRecord
     public function getLang()
     {
         return $this->hasOne(Languages::className(), ['id' => 'langId']);
-    }
-
-    /**
-     * @inheritdoc
-     * @return \backend\queries\BooksQuery the active query used by this AR class.
-     */
-    public static function find()
-    {
-        return new \backend\queries\BooksQuery(get_called_class());
     }
 }

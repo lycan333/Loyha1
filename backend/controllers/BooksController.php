@@ -42,7 +42,7 @@ class BooksController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
+        return $this->render('bookview', [
             'model' => $this->findModel($id),
         ]);
     }
@@ -56,17 +56,7 @@ class BooksController extends Controller
     {
         $model = new Books();
         if (Yii::$app->request->isPost) {
-            if ($model->load(Yii::$app->request->post())) {
-                $model->imageFiles = UploadedFile::getInstance($model, 'imageFiles');
-                $model->img = $model->imageFiles->baseName . $model->imageFiles->extension;
-                if ($model->validate()) {
-                    $model->save();
-                    Yii::$app->session->setFlash("success", "Malumot yuklandi");
-                    return $this->redirect(['index']);
-                } else {
-                    Yii::$app->session->setFlash("danger", "Malumot yuklanmadi");
-                }
-            }
+            $this->handlePostSave($model);
         }
         return $this->render('create', [
             'model' => $model,
@@ -83,16 +73,31 @@ class BooksController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if(Yii::$app->request->isPost){
+            $this->handlePostSave($model);
         }
-
         return $this->render('update', [
             'model' => $model,
         ]);
     }
+    protected function handlePostSave(Books $model)
+    {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->imageFiles = UploadedFile::getInstance($model, 'imageFiles');
+            if ($model->validate()) {
+                if ($model->img) {
+                    $filePath = md5($model->imageFiles) . '.' . $model->imageFiles->extension;
+                    if ($model->imageFiles->saveAs('uploads/' . $filePath)) {
+                        $model->img = $filePath;
+                    }
+                }
 
+                if ($model->save(false)) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            }
+        }
+    }
     /**
      * Deletes an existing Books model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

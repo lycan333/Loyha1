@@ -15,7 +15,7 @@
             <!-- Language Selector -->
             <li>
                 <a href="extra-login.html">
-                    <?= Html::a('Tizimdan chiqish', ['site/logout'], ['data-method' => 'post']) ?>
+                    <?= \yii\helpers\Html::a('Tizimdan chiqish', ['site/logout'], ['data-method' => 'post']) ?>
                 </a>
             </li>
         </ul>

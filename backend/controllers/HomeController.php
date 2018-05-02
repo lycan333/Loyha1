@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\searchModels\EmployesSearch;
 use yii\filters\AccessControl;
 
 class HomeController extends \yii\web\Controller
@@ -33,7 +34,13 @@ class HomeController extends \yii\web\Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $searchModel = new EmployesSearch();
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
 }
